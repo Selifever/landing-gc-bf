@@ -1,0 +1,69 @@
+# Keeps the landing in sync with the city sheet.
+# - Every 15 minutes (only on the default branch), on demand (Actions > Sync cities > Run workflow)
+#   or instantly from the sheet via repository_dispatch (event type "sheet-updated").
+# - On pushes that touch src/ or scripts/: rebuilds index.html so it never drifts from cities.json.
+# Needs the repo secret SHEET_CSV_URL (published CSV of the city tab). Without it, only the rebuild runs.
+name: Sync cities
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [sheet-updated]
+  push:
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - ".github/workflows/sync-cities.yml"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-cities-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync cities from the sheet
+        if: github.event_name != 'push'
+        env:
+          SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
+        run: |
+          if [ -z "$SHEET_CSV_URL" ]; then
+            echo "::warning::SHEET_CSV_URL secret is not set; skipping the sheet sync"
+            exit 0
+          fi
+          node scripts/sync.mjs
+
+      - name: Build and check every destination
+        run: node scripts/build.mjs --check
+
+      - name: Commit and publish
+        run: |
+          if git diff --quiet; then
+            echo "Nothing changed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/cities.json index.html sitemap.xml
+          git commit -m "Sync cities from sheet"
+          git push
+          # Pushes made with GITHUB_TOKEN don't start a Pages build on their own
+          if [ "${{ github.ref_name }}" = "${{ github.event.repository.default_branch }}" ]; then
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "::warning::Could not request a Pages build"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
