@@ -66,7 +66,8 @@ ${r.cities.map(c => {
   const locale = `${c.lang}-${c.country}`;
   const local = c.local ? `<span class="local" lang="${locale}">${esc(c.local)}</span>` : "";
   const tz = c.tz ? ` data-tz="${esc(c.tz.join(" "))}"` : "";
-  return `      <li><a class="city" href="${esc(trackedUrl(c))}" hreflang="${locale}"${tz}><span class="txt"><span class="name">${esc(c.name)}</span>${local}</span><span class="go">${ARROW}</span></a></li>`;
+  const geo = c.lat != null ? ` data-lat="${c.lat}" data-lon="${c.lon}" data-zone="${esc(c.timezone)}"` : "";
+  return `      <li><a class="city" href="${esc(trackedUrl(c))}" hreflang="${locale}" data-country="${c.country}"${geo}${tz}><span class="txt"><span class="name">${esc(c.name)}</span>${local}</span><span class="go">${ARROW}</span></a></li>`;
 }).join("\n")}
     </ul>
   </section>`).join("\n");
@@ -98,15 +99,22 @@ const html = readFileSync(join(root, "src/index.html"), "utf8").replace(/\{\{(\w
   if (!(k in vars)) throw new Error(`Unknown placeholder ${m}`);
   return vars[k];
 });
-writeFileSync(join(root, "index.html"), html);
-
-const today = new Date().toISOString().slice(0, 10);
-writeFileSync(join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
+// Only touch the files (and the sitemap date) when the page actually changes
+const indexFile = join(root, "index.html");
+let previous = "";
+try { previous = readFileSync(indexFile, "utf8"); } catch {}
+if (html !== previous) {
+  writeFileSync(indexFile, html);
+  const today = new Date().toISOString().slice(0, 10);
+  writeFileSync(join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${SITE}/</loc><lastmod>${today}</lastmod></url>
 </urlset>
 `);
-console.log(`Built index.html (${all.length} cities) and sitemap.xml`);
+  console.log(`Built index.html (${all.length} cities) and sitemap.xml`);
+} else {
+  console.log(`index.html already up to date (${all.length} cities)`);
+}
 
 if (process.argv.includes("--check")) {
   let bad = 0;

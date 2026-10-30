@@ -75,6 +75,12 @@
     transition:transform .1s,filter .15s}
   .suggest a:hover{filter:brightness(1.06)}
   .suggest a:active{transform:scale(.98)}
+  .suggest a[hidden]+.locate{margin-left:0}
+  .locate{display:inline-flex;align-items:center;gap:6px;margin:10px 0 0 4px;padding:8px 4px;border:0;
+    background:none;color:var(--muted);font:600 13px/1 var(--font);cursor:pointer;vertical-align:middle}
+  .locate:hover{color:var(--text)}
+  .locate[disabled]{cursor:default;opacity:.7}
+  @media (min-width:480px){.locate{margin:0 0 0 12px}}
 
   /* Search + filters */
   .tools{position:sticky;top:0;z-index:10;background:var(--bg);padding:16px 0 8px;
@@ -144,8 +150,12 @@
     <h1>Choose your city</h1>
     <p class="lead">Join the Black Friday waitlist in your city and get early access to the best deals on experiences, concerts and shows.</p>
     <div class="suggest" id="suggest">
-      <small>Near you</small>
+      <small id="suggestLabel">Near you</small>
       <a id="suggestLink" href="#"></a>
+      <button class="locate" id="locate" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/></svg>
+        <span id="locateText">Use my location</span>
+      </button>
     </div>
   </div>
 </header>
@@ -181,7 +191,7 @@
 <script>
 document.body.classList.remove("no-js");
 const $ = id => document.getElementById(id);
-const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 const cities = [...document.querySelectorAll(".city")];
 const sections = [...document.querySelectorAll("#list section")];
 
@@ -233,18 +243,75 @@ $("chips").addEventListener("click", e => {
   apply();
 });
 
-// Suggest a city from the device time zone
-try {
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const hit = cities.find(a => (a.dataset.tz || "").split(" ").includes(tz));
-  if (hit) {
-    const link = $("suggestLink");
-    link.href = hit.href;
-    link.innerHTML = `<span></span>${hit.querySelector(".go").innerHTML}`;
-    link.firstChild.textContent = `See deals in ${hit.querySelector(".name").textContent}`;
-    $("suggest").style.display = "block";
+// "Near you": the device location when the user allows it (nothing leaves the browser);
+// until then, a guess from time zone + browser language.
+const suggestLink = $("suggestLink"), locate = $("locate"), locateText = $("locateText");
+function showSuggestion(city, label) {
+  suggestLink.hidden = !city;
+  if (city) {
+    suggestLink.href = city.href;
+    suggestLink.innerHTML = `<span></span>${city.querySelector(".go").innerHTML}`;
+    suggestLink.firstChild.textContent = `See deals in ${city.querySelector(".name").textContent}`;
   }
+  $("suggestLabel").textContent = label;
+  $("suggest").style.display = "block";
+}
+
+const offsetOf = zone => {
+  try { return new Intl.DateTimeFormat("en", { timeZone: zone, timeZoneName: "longOffset" }).formatToParts().find(p => p.type === "timeZoneName").value; }
+  catch (e) { return null; }
+};
+function guessCity() {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const tzHit = cities.find(a => (a.dataset.tz || "").split(" ").includes(tz));
+  // A browser language with a country (es-ES) wins when that country shares the device's UTC offset:
+  // Windows reports Spain as Europe/Paris, but es-ES + UTC+1 still means Spain.
+  const here = offsetOf(tz);
+  const countries = (navigator.languages || [navigator.language]).map(l => (l.split("-")[1] || "").toUpperCase()).filter(Boolean);
+  for (const cc of countries) {
+    if (tzHit && tzHit.dataset.country === cc) return tzHit;
+    const same = cities.filter(a => a.dataset.country === cc && offsetOf(a.dataset.zone) === here);
+    if (same.length) return same.find(a => a.dataset.tz) || same[0];
+  }
+  return tzHit;
+}
+
+const MAX_KM = 150;
+function nearest(lat, lon) {
+  const rad = d => d * Math.PI / 180;
+  let best = null, bestKm = Infinity;
+  for (const a of cities) {
+    if (!a.dataset.lat) continue;
+    const dLat = rad(a.dataset.lat - lat), dLon = rad(a.dataset.lon - lon);
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat)) * Math.cos(rad(+a.dataset.lat)) * Math.sin(dLon / 2) ** 2;
+    const km = 12742 * Math.asin(Math.sqrt(h));
+    if (km < bestKm) { best = a; bestKm = km; }
+  }
+  return bestKm <= MAX_KM ? best : null;
+}
+function useLocation() {
+  if (!navigator.geolocation) { locate.hidden = true; return; }
+  locate.disabled = true;
+  locateText.textContent = "Finding you…";
+  navigator.geolocation.getCurrentPosition(pos => {
+    const city = nearest(pos.coords.latitude, pos.coords.longitude);
+    locate.hidden = true;
+    if (city) showSuggestion(city, "Closest to you");
+    else showSuggestion(null, "No Black Friday city near you yet. Pick one below.");
+  }, () => {
+    locate.disabled = false;
+    locateText.textContent = "Location unavailable. Try again";
+  }, { maximumAge: 600000, timeout: 10000 });
+}
+
+try {
+  showSuggestion(guessCity() || null, "Near you");
+  if (!suggestLink.href || suggestLink.hidden) $("suggestLabel").textContent = "Find your city";
 } catch (e) {}
+locate.onclick = useLocation;
+// Already allowed before: use it straight away, without asking again
+if (navigator.permissions) navigator.permissions.query({ name: "geolocation" })
+  .then(p => { if (p.state === "granted") useLocation(); }).catch(() => {});
 
 // Hero video: skipped for reduced motion and data saver; the poster image stays otherwise
 const media = $("media");
