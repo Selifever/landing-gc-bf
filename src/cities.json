@@ -1,117 +1,147 @@
 {
-  "_source": "Sheet 'Black Friday Organization_2026' > tab 'Black Friday - WL Plans'. Mexico City is left out on purpose. code = Fever internal city code (DWH COM_DIM_CITY.CD_CITY), used in utm_campaign={id}_{code}. lang/country = language Fever serves at feverup.com/m/{id} (verified 2026-10-30). tz = device time zones that trigger the 'Near you' suggestion.",
+  "_source": "Sheet 'Black Friday Organization_2026' > tab 'Black Friday - WL Plans'. Plan IDs in exclude are skipped (Mexico City, on purpose). Synced by scripts/sync.mjs. code = Fever internal city code (DWH COM_DIM_CITY.CD_CITY), used in utm_campaign={id}_{code}. lang/country = language Fever serves at feverup.com/m/{id} (verified 2026-10-30). lat/lon/timezone = city data from the plan page, used for the nearest-city suggestion. tz = device time zones that trigger the 'Near you' suggestion.",
+  "exclude": [
+    142366
+  ],
   "regions": [
-    { "name": "Spain", "cities": [
-      { "name": "Alicante", "id": 492860, "code": "ALC", "lang": "es", "country": "ES" },
-      { "name": "Barcelona", "id": 142766, "code": "BCN", "lang": "es", "country": "ES" },
-      { "name": "Bilbao", "id": 259144, "code": "BIO", "lang": "es", "country": "ES" },
-      { "name": "Madrid", "id": 142275, "code": "MAD", "lang": "es", "country": "ES", "tz": ["Europe/Madrid"] },
-      { "name": "Majorca", "local": "Mallorca", "id": 260009, "code": "PMI", "lang": "es", "country": "ES" },
-      { "name": "Murcia", "id": 261722, "code": "MJV", "lang": "es", "country": "ES" },
-      { "name": "Seville", "local": "Sevilla", "id": 260010, "code": "SEV", "lang": "es", "country": "ES" },
-      { "name": "Valencia", "id": 260011, "code": "VLC", "lang": "es", "country": "ES" },
-      { "name": "Zaragoza", "id": 260012, "code": "ZAZ", "lang": "es", "country": "ES" }
-    ]},
-    { "name": "UK & Ireland", "cities": [
-      { "name": "Birmingham", "id": 261719, "code": "BHX", "lang": "en", "country": "GB" },
-      { "name": "Dublin", "id": 142476, "code": "DUB", "lang": "en", "country": "IE", "tz": ["Europe/Dublin"] },
-      { "name": "Leeds", "id": 501772, "code": "LBA", "lang": "en", "country": "GB" },
-      { "name": "Liverpool", "id": 261718, "code": "LPL", "lang": "en", "country": "GB" },
-      { "name": "London", "id": 142272, "code": "LON", "lang": "en", "country": "GB", "tz": ["Europe/London"] },
-      { "name": "Manchester", "id": 142473, "code": "MAN", "lang": "en", "country": "GB" }
-    ]},
-    { "name": "France", "cities": [
-      { "name": "Bordeaux", "id": 260008, "code": "BOD", "lang": "fr", "country": "FR" },
-      { "name": "Lille", "id": 261730, "code": "LIL", "lang": "fr", "country": "FR" },
-      { "name": "Lyon", "id": 259260, "code": "LYS", "lang": "fr", "country": "FR" },
-      { "name": "Marseille", "id": 259261, "code": "MRS", "lang": "fr", "country": "FR" },
-      { "name": "Nice", "id": 261729, "code": "NCE", "lang": "fr", "country": "FR" },
-      { "name": "Paris", "id": 142276, "code": "PAR", "lang": "fr", "country": "FR", "tz": ["Europe/Paris"] },
-      { "name": "Strasbourg", "id": 261113, "code": "SXB", "lang": "fr", "country": "FR" },
-      { "name": "Toulouse", "id": 259262, "code": "TLS", "lang": "fr", "country": "FR" }
-    ]},
-    { "name": "Germany & Austria", "cities": [
-      { "name": "Berlin", "id": 142421, "code": "QPP", "lang": "de", "country": "DE", "tz": ["Europe/Berlin"] },
-      { "name": "Dresden", "id": 492859, "code": "DRS", "lang": "de", "country": "DE" },
-      { "name": "Frankfurt", "id": 260013, "code": "FRA", "lang": "de", "country": "DE" },
-      { "name": "Hamburg", "id": 259010, "code": "HAM", "lang": "de", "country": "DE" },
-      { "name": "Munich", "local": "München", "id": 259011, "code": "MUC", "lang": "de", "country": "DE" },
-      { "name": "Stuttgart", "id": 492855, "code": "STR", "lang": "de", "country": "DE" },
-      { "name": "Vienna", "local": "Wien", "id": 143713, "code": "VIE", "lang": "de", "country": "AT", "tz": ["Europe/Vienna"] }
-    ]},
-    { "name": "Rest of Europe", "cities": [
-      { "name": "Amsterdam", "id": 492844, "code": "AMS", "lang": "nl", "country": "NL", "tz": ["Europe/Amsterdam"] },
-      { "name": "Brussels", "local": "Bruxelles", "id": 142549, "code": "BRU", "lang": "fr", "country": "BE", "tz": ["Europe/Brussels"] },
-      { "name": "Geneva", "local": "Genève", "id": 261112, "code": "GVA", "lang": "fr", "country": "CH", "tz": ["Europe/Zurich"] },
-      { "name": "Liège", "id": 261111, "code": "LGG", "lang": "fr", "country": "BE" },
-      { "name": "Lisbon", "local": "Lisboa", "id": 259013, "code": "LIS", "lang": "pt", "country": "PT", "tz": ["Europe/Lisbon"] },
-      { "name": "Porto", "id": 259014, "code": "OPO", "lang": "pt", "country": "PT" },
-      { "name": "Stockholm", "id": 492861, "code": "ARN", "lang": "sv", "country": "SE", "tz": ["Europe/Stockholm"] }
-    ]},
-    { "name": "United States", "cities": [
-      { "name": "Atlanta", "id": 142485, "code": "ATL", "lang": "en", "country": "US" },
-      { "name": "Austin", "id": 142484, "code": "AUS", "lang": "en", "country": "US" },
-      { "name": "Baltimore", "id": 144885, "code": "BWI", "lang": "en", "country": "US" },
-      { "name": "Boston", "id": 142482, "code": "BOS", "lang": "en", "country": "US" },
-      { "name": "Charleston", "id": 261717, "code": "CHS", "lang": "en", "country": "US" },
-      { "name": "Chicago", "id": 142479, "code": "ORD", "lang": "en", "country": "US", "tz": ["America/Chicago"] },
-      { "name": "Cincinnati", "id": 260016, "code": "CVG", "lang": "en", "country": "US" },
-      { "name": "Cleveland", "id": 260017, "code": "CLE", "lang": "en", "country": "US" },
-      { "name": "Columbus", "id": 261711, "code": "CMH", "lang": "en", "country": "US" },
-      { "name": "Dallas", "id": 142478, "code": "DFW", "lang": "en", "country": "US" },
-      { "name": "Denver", "id": 259076, "code": "DEN", "lang": "en", "country": "US", "tz": ["America/Denver"] },
-      { "name": "Detroit", "id": 260018, "code": "DTW", "lang": "en", "country": "US", "tz": ["America/Detroit"] },
-      { "name": "Fort Lauderdale", "id": 144886, "code": "FLL", "lang": "en", "country": "US" },
-      { "name": "Houston", "id": 142475, "code": "IAH", "lang": "en", "country": "US" },
-      { "name": "Indianapolis", "id": 261715, "code": "IND", "lang": "en", "country": "US", "tz": ["America/Indiana/Indianapolis"] },
-      { "name": "Jersey City", "id": 261716, "code": "DSS", "lang": "en", "country": "US" },
-      { "name": "Kansas City", "id": 261710, "code": "MCI", "lang": "en", "country": "US" },
-      { "name": "Los Angeles", "id": 142474, "code": "LAX", "lang": "en", "country": "US", "tz": ["America/Los_Angeles"] },
-      { "name": "Memphis", "id": 261712, "code": "MEM", "lang": "en", "country": "US" },
-      { "name": "Miami", "id": 260019, "code": "MIA", "lang": "en", "country": "US" },
-      { "name": "Minneapolis", "id": 261714, "code": "MSP", "lang": "en", "country": "US" },
-      { "name": "Nashville", "id": 144887, "code": "BNA", "lang": "en", "country": "US" },
-      { "name": "New York", "id": 142469, "code": "NYC", "lang": "en", "country": "US", "tz": ["America/New_York"] },
-      { "name": "Orlando", "id": 260020, "code": "MCO", "lang": "en", "country": "US" },
-      { "name": "Philadelphia", "id": 260021, "code": "PHL", "lang": "en", "country": "US" },
-      { "name": "Phoenix", "id": 260022, "code": "PHX", "lang": "en", "country": "US", "tz": ["America/Phoenix"] },
-      { "name": "Portland", "id": 142467, "code": "PDX", "lang": "en", "country": "US" },
-      { "name": "Raleigh", "id": 143795, "code": "RDU", "lang": "en", "country": "US" },
-      { "name": "Richmond", "id": 260023, "code": "RIC", "lang": "en", "country": "US" },
-      { "name": "Sacramento", "id": 143257, "code": "SMF", "lang": "en", "country": "US" },
-      { "name": "Salt Lake City", "id": 142466, "code": "SLC", "lang": "en", "country": "US" },
-      { "name": "San Antonio", "id": 144888, "code": "SAT", "lang": "en", "country": "US" },
-      { "name": "San Diego", "id": 143258, "code": "SAN", "lang": "en", "country": "US" },
-      { "name": "San Francisco", "id": 142464, "code": "SFO", "lang": "en", "country": "US" },
-      { "name": "San Jose", "id": 143259, "code": "SJC", "lang": "en", "country": "US" },
-      { "name": "Santa Rosa", "id": 260024, "code": "BVQ", "lang": "en", "country": "US" },
-      { "name": "Seattle", "id": 142465, "code": "SEA", "lang": "en", "country": "US" },
-      { "name": "Tampa", "id": 260025, "code": "TPA", "lang": "en", "country": "US" },
-      { "name": "Tucson", "id": 143796, "code": "TUS", "lang": "en", "country": "US" },
-      { "name": "Tulsa", "id": 142461, "code": "TUL", "lang": "en", "country": "US" },
-      { "name": "Washington DC", "id": 142460, "code": "IAD", "lang": "en", "country": "US" },
-      { "name": "West Palm Beach", "id": 260026, "code": "PBI", "lang": "en", "country": "US" }
-    ]},
-    { "name": "Canada", "cities": [
-      { "name": "Edmonton", "id": 501765, "code": "YEG", "lang": "en", "country": "CA", "tz": ["America/Edmonton"] },
-      { "name": "Montreal", "local": "Montréal", "id": 142548, "code": "YUL", "lang": "fr", "country": "CA" },
-      { "name": "Toronto", "id": 142462, "code": "YYZ", "lang": "en", "country": "CA", "tz": ["America/Toronto"] },
-      { "name": "Vancouver", "id": 260028, "code": "YVR", "lang": "en", "country": "CA", "tz": ["America/Vancouver"] }
-    ]},
-    { "name": "Latin America", "cities": [
-      { "name": "Bogota", "local": "Bogotá", "id": 501763, "code": "BOG", "lang": "es", "country": "CO", "tz": ["America/Bogota"] },
-      { "name": "Rio de Janeiro", "id": 142736, "code": "GIG", "lang": "pt", "country": "BR" },
-      { "name": "Santiago", "id": 142550, "code": "SCL", "lang": "es", "country": "CL", "tz": ["America/Santiago"] },
-      { "name": "São Paulo", "id": 142618, "code": "GRU", "lang": "pt", "country": "BR", "tz": ["America/Sao_Paulo"] }
-    ]},
-    { "name": "Asia-Pacific & Middle East", "cities": [
-      { "name": "Adelaide", "id": 142815, "code": "ADL", "lang": "en", "country": "AU", "tz": ["Australia/Adelaide"] },
-      { "name": "Brisbane", "id": 142481, "code": "BNE", "lang": "en", "country": "AU", "tz": ["Australia/Brisbane"] },
-      { "name": "Dubai", "id": 142477, "code": "DXB", "lang": "en", "country": "AE", "tz": ["Asia/Dubai"] },
-      { "name": "Melbourne", "id": 142472, "code": "MEL", "lang": "en", "country": "AU", "tz": ["Australia/Melbourne"] },
-      { "name": "Perth", "id": 263498, "code": "PER", "lang": "en", "country": "AU", "tz": ["Australia/Perth"] },
-      { "name": "Singapore", "id": 142463, "code": "SIN", "lang": "en", "country": "SG", "tz": ["Asia/Singapore"] },
-      { "name": "Sydney", "id": 259075, "code": "SYD", "lang": "en", "country": "AU", "tz": ["Australia/Sydney"] }
-    ]}
+    {
+      "name": "Spain",
+      "cities": [
+        { "name": "Alicante", "id": 492860, "code": "ALC", "lang": "es", "country": "ES", "lat": 38.3453, "lon": -0.4862, "timezone": "Europe/Madrid" },
+        { "name": "Barcelona", "id": 142766, "code": "BCN", "lang": "es", "country": "ES", "lat": 41.387, "lon": 2.1701, "timezone": "Europe/Madrid" },
+        { "name": "Bilbao", "id": 259144, "code": "BIO", "lang": "es", "country": "ES", "lat": 43.263, "lon": -2.935, "timezone": "Europe/Madrid" },
+        { "name": "Madrid", "id": 142275, "code": "MAD", "lang": "es", "country": "ES", "lat": 40.4168, "lon": -3.7038, "timezone": "Europe/Madrid", "tz": [ "Europe/Madrid" ] },
+        { "name": "Majorca", "local": "Mallorca", "id": 260009, "code": "PMI", "lang": "es", "country": "ES", "lat": 39.5701, "lon": 2.6512, "timezone": "Europe/Madrid" },
+        { "name": "Murcia", "id": 261722, "code": "MJV", "lang": "es", "country": "ES", "lat": 37.9835, "lon": -1.1299, "timezone": "Europe/Madrid" },
+        { "name": "Seville", "local": "Sevilla", "id": 260010, "code": "SEV", "lang": "es", "country": "ES", "lat": 37.3886, "lon": -5.9843, "timezone": "Europe/Madrid" },
+        { "name": "Valencia", "id": 260011, "code": "VLC", "lang": "es", "country": "ES", "lat": 39.4704, "lon": -0.3771, "timezone": "Europe/Madrid" },
+        { "name": "Zaragoza", "id": 260012, "code": "ZAZ", "lang": "es", "country": "ES", "lat": 41.6563, "lon": -0.8766, "timezone": "Europe/Madrid" }
+      ]
+    },
+    {
+      "name": "UK & Ireland",
+      "cities": [
+        { "name": "Birmingham", "id": 261719, "code": "BHX", "lang": "en", "country": "GB", "lat": 52.4831, "lon": -1.8936, "timezone": "Europe/London" },
+        { "name": "Dublin", "id": 142476, "code": "DUB", "lang": "en", "country": "IE", "lat": 53.3434, "lon": -6.2676, "timezone": "Europe/Dublin", "tz": [ "Europe/Dublin" ] },
+        { "name": "Leeds", "id": 501772, "code": "LBA", "lang": "en", "country": "GB", "lat": 53.7997, "lon": -1.5492, "timezone": "Europe/London" },
+        { "name": "Liverpool", "id": 261718, "code": "LPL", "lang": "en", "country": "GB", "lat": 53.4049, "lon": -2.9856, "timezone": "Europe/London" },
+        { "name": "London", "id": 142272, "code": "LON", "lang": "en", "country": "GB", "lat": 51.5141, "lon": -0.1182, "timezone": "Europe/London", "tz": [ "Europe/London" ] },
+        { "name": "Manchester", "id": 142473, "code": "MAN", "lang": "en", "country": "GB", "lat": 53.4808, "lon": -2.2426, "timezone": "Europe/London" }
+      ]
+    },
+    {
+      "name": "France",
+      "cities": [
+        { "name": "Bordeaux", "id": 260008, "code": "BOD", "lang": "fr", "country": "FR", "lat": 44.8378, "lon": -0.594, "timezone": "Europe/Paris" },
+        { "name": "Lille", "id": 261730, "code": "LIL", "lang": "fr", "country": "FR", "lat": 50.6319, "lon": 3.0575, "timezone": "Europe/Paris" },
+        { "name": "Lyon", "id": 259260, "code": "LYS", "lang": "fr", "country": "FR", "lat": 45.7589, "lon": 4.8414, "timezone": "Europe/Paris" },
+        { "name": "Marseille", "id": 259261, "code": "MRS", "lang": "fr", "country": "FR", "lat": 43.2967, "lon": 5.3764, "timezone": "Europe/Paris" },
+        { "name": "Nice", "id": 261729, "code": "NCE", "lang": "fr", "country": "FR", "lat": 43.6961, "lon": 7.2718, "timezone": "Europe/Paris" },
+        { "name": "Paris", "id": 142276, "code": "PAR", "lang": "fr", "country": "FR", "lat": 48.8567, "lon": 2.3508, "timezone": "Europe/Paris", "tz": [ "Europe/Paris" ] },
+        { "name": "Strasbourg", "id": 261113, "code": "SXB", "lang": "fr", "country": "FR", "lat": 48.5736, "lon": 7.7532, "timezone": "Europe/Paris" },
+        { "name": "Toulouse", "id": 259262, "code": "TLS", "lang": "fr", "country": "FR", "lat": 43.604, "lon": 1.4431, "timezone": "Europe/Paris" }
+      ]
+    },
+    {
+      "name": "Germany & Austria",
+      "cities": [
+        { "name": "Berlin", "id": 142421, "code": "QPP", "lang": "de", "country": "DE", "lat": 52.5186, "lon": 13.4081, "timezone": "Europe/Berlin", "tz": [ "Europe/Berlin" ] },
+        { "name": "Dresden", "id": 492859, "code": "DRS", "lang": "de", "country": "DE", "lat": 51.0493, "lon": 13.7384, "timezone": "Europe/Berlin" },
+        { "name": "Frankfurt", "id": 260013, "code": "FRA", "lang": "de", "country": "DE", "lat": 50.1167, "lon": 8.6833, "timezone": "Europe/Berlin" },
+        { "name": "Hamburg", "id": 259010, "code": "HAM", "lang": "de", "country": "DE", "lat": 53.5506, "lon": 9.9933, "timezone": "Europe/Berlin" },
+        { "name": "Munich", "local": "München", "id": 259011, "code": "MUC", "lang": "de", "country": "DE", "lat": 48.1369, "lon": 11.5753, "timezone": "Europe/Berlin" },
+        { "name": "Stuttgart", "id": 492855, "code": "STR", "lang": "de", "country": "DE", "lat": 48.7756, "lon": 9.1828, "timezone": "Europe/Berlin" },
+        { "name": "Vienna", "local": "Wien", "id": 143713, "code": "VIE", "lang": "de", "country": "AT", "lat": 48.2092, "lon": 16.3728, "timezone": "Europe/Vienna", "tz": [ "Europe/Vienna" ] }
+      ]
+    },
+    {
+      "name": "Rest of Europe",
+      "cities": [
+        { "name": "Amsterdam", "id": 492844, "code": "AMS", "lang": "nl", "country": "NL", "lat": 52.3738, "lon": 4.8909, "timezone": "Europe/Amsterdam", "tz": [ "Europe/Amsterdam" ] },
+        { "name": "Brussels", "local": "Bruxelles", "id": 142549, "code": "BRU", "lang": "fr", "country": "BE", "lat": 50.8474, "lon": 4.3553, "timezone": "Europe/Brussels", "tz": [ "Europe/Brussels" ] },
+        { "name": "Geneva", "local": "Genève", "id": 261112, "code": "GVA", "lang": "fr", "country": "CH", "lat": 46.207, "lon": 6.1423, "timezone": "Europe/Zurich", "tz": [ "Europe/Zurich" ] },
+        { "name": "Liège", "id": 261111, "code": "LGG", "lang": "fr", "country": "BE", "lat": 50.6337, "lon": 5.5675, "timezone": "Europe/Brussels" },
+        { "name": "Lisbon", "local": "Lisboa", "id": 259013, "code": "LIS", "lang": "pt", "country": "PT", "lat": 38.7223, "lon": -9.1393, "timezone": "Europe/Lisbon", "tz": [ "Europe/Lisbon" ] },
+        { "name": "Porto", "id": 259014, "code": "OPO", "lang": "pt", "country": "PT", "lat": 41.15, "lon": -8.6102, "timezone": "Europe/Lisbon" },
+        { "name": "Stockholm", "id": 492861, "code": "ARN", "lang": "sv", "country": "SE", "lat": 59.3328, "lon": 18.0645, "timezone": "Europe/Stockholm", "tz": [ "Europe/Stockholm" ] }
+      ]
+    },
+    {
+      "name": "United States",
+      "cities": [
+        { "name": "Atlanta", "id": 142485, "code": "ATL", "lang": "en", "country": "US", "lat": 33.7456, "lon": -84.383, "timezone": "America/New_York" },
+        { "name": "Austin", "id": 142484, "code": "AUS", "lang": "en", "country": "US", "lat": 30.3068, "lon": -97.7548, "timezone": "America/Chicago" },
+        { "name": "Baltimore", "id": 144885, "code": "BWI", "lang": "en", "country": "US", "lat": 39.3002, "lon": -76.6105, "timezone": "America/New_York" },
+        { "name": "Boston", "id": 142482, "code": "BOS", "lang": "en", "country": "US", "lat": 42.3583, "lon": -71.0587, "timezone": "America/New_York" },
+        { "name": "Charleston", "id": 261717, "code": "CHS", "lang": "en", "country": "US", "lat": 32.777, "lon": -79.9314, "timezone": "America/Kentucky/Monticello" },
+        { "name": "Chicago", "id": 142479, "code": "ORD", "lang": "en", "country": "US", "lat": 41.878, "lon": -87.6241, "timezone": "America/Chicago", "tz": [ "America/Chicago" ] },
+        { "name": "Cincinnati", "id": 260016, "code": "CVG", "lang": "en", "country": "US", "lat": 39.1039, "lon": -84.5122, "timezone": "America/New_York" },
+        { "name": "Cleveland", "id": 260017, "code": "CLE", "lang": "en", "country": "US", "lat": 41.4994, "lon": -81.6954, "timezone": "America/New_York" },
+        { "name": "Columbus", "id": 261711, "code": "CMH", "lang": "en", "country": "US", "lat": 39.9612, "lon": -82.9988, "timezone": "America/New_York" },
+        { "name": "Dallas", "id": 142478, "code": "DFW", "lang": "en", "country": "US", "lat": 32.7767, "lon": -96.7977, "timezone": "America/Chicago" },
+        { "name": "Denver", "id": 259076, "code": "DEN", "lang": "en", "country": "US", "lat": 39.7394, "lon": -104.9901, "timezone": "America/Denver", "tz": [ "America/Denver" ] },
+        { "name": "Detroit", "id": 260018, "code": "DTW", "lang": "en", "country": "US", "lat": 42.3327, "lon": -83.0446, "timezone": "America/Detroit", "tz": [ "America/Detroit" ] },
+        { "name": "Fort Lauderdale", "id": 144886, "code": "FLL", "lang": "en", "country": "US", "lat": 26.1224, "lon": -80.1373, "timezone": "America/New_York" },
+        { "name": "Houston", "id": 142475, "code": "IAH", "lang": "en", "country": "US", "lat": 29.7601, "lon": -95.369, "timezone": "America/Chicago" },
+        { "name": "Indianapolis", "id": 261715, "code": "IND", "lang": "en", "country": "US", "lat": 39.7767, "lon": -86.1459, "timezone": "America/Indiana/Indianapolis", "tz": [ "America/Indiana/Indianapolis" ] },
+        { "name": "Jersey City", "id": 261716, "code": "DSS", "lang": "en", "country": "US", "lat": 40.7178, "lon": -74.0431, "timezone": "America/New_York" },
+        { "name": "Kansas City", "id": 261710, "code": "MCI", "lang": "en", "country": "US", "lat": 39.1015, "lon": -94.5789, "timezone": "America/Chicago" },
+        { "name": "Los Angeles", "id": 142474, "code": "LAX", "lang": "en", "country": "US", "lat": 34.0522, "lon": -118.2437, "timezone": "America/Los_Angeles", "tz": [ "America/Los_Angeles" ] },
+        { "name": "Memphis", "id": 261712, "code": "MEM", "lang": "en", "country": "US", "lat": 35.1495, "lon": -90.049, "timezone": "America/Chicago" },
+        { "name": "Miami", "id": 260019, "code": "MIA", "lang": "en", "country": "US", "lat": 25.7618, "lon": -80.1946, "timezone": "America/New_York" },
+        { "name": "Minneapolis", "id": 261714, "code": "MSP", "lang": "en", "country": "US", "lat": 44.9778, "lon": -93.265, "timezone": "America/Chicago" },
+        { "name": "Nashville", "id": 144887, "code": "BNA", "lang": "en", "country": "US", "lat": 36.1718, "lon": -86.785, "timezone": "America/Chicago" },
+        { "name": "New York", "id": 142469, "code": "NYC", "lang": "en", "country": "US", "lat": 40.736, "lon": -73.9842, "timezone": "America/New_York", "tz": [ "America/New_York" ] },
+        { "name": "Orlando", "id": 260020, "code": "MCO", "lang": "en", "country": "US", "lat": 28.5383, "lon": -81.3792, "timezone": "America/New_York" },
+        { "name": "Philadelphia", "id": 260021, "code": "PHL", "lang": "en", "country": "US", "lat": 39.9522, "lon": -75.1655, "timezone": "America/New_York" },
+        { "name": "Phoenix", "id": 260022, "code": "PHX", "lang": "en", "country": "US", "lat": 33.4486, "lon": -112.0735, "timezone": "America/Phoenix", "tz": [ "America/Phoenix" ] },
+        { "name": "Portland", "id": 142467, "code": "PDX", "lang": "en", "country": "US", "lat": 45.5161, "lon": -122.6782, "timezone": "America/Los_Angeles" },
+        { "name": "Raleigh", "id": 143795, "code": "RDU", "lang": "en", "country": "US", "lat": 35.7796, "lon": -78.6396, "timezone": "America/New_York" },
+        { "name": "Richmond", "id": 260023, "code": "RIC", "lang": "en", "country": "US", "lat": 37.5408, "lon": -77.435, "timezone": "America/New_York" },
+        { "name": "Sacramento", "id": 143257, "code": "SMF", "lang": "en", "country": "US", "lat": 38.5805, "lon": -121.495, "timezone": "America/Los_Angeles" },
+        { "name": "Salt Lake City", "id": 142466, "code": "SLC", "lang": "en", "country": "US", "lat": 40.7608, "lon": -111.8913, "timezone": "America/Denver" },
+        { "name": "San Antonio", "id": 144888, "code": "SAT", "lang": "en", "country": "US", "lat": 29.425, "lon": -98.4929, "timezone": "America/Chicago" },
+        { "name": "San Diego", "id": 143258, "code": "SAN", "lang": "en", "country": "US", "lat": 32.7157, "lon": -117.1592, "timezone": "America/Los_Angeles" },
+        { "name": "San Francisco", "id": 142464, "code": "SFO", "lang": "en", "country": "US", "lat": 37.7749, "lon": -122.4194, "timezone": "America/Los_Angeles" },
+        { "name": "San Jose", "id": 143259, "code": "SJC", "lang": "en", "country": "US", "lat": 37.3387, "lon": -121.8853, "timezone": "America/Los_Angeles" },
+        { "name": "Santa Rosa", "id": 260024, "code": "BVQ", "lang": "en", "country": "US", "lat": 38.2919, "lon": -122.458, "timezone": "America/Los_Angeles" },
+        { "name": "Seattle", "id": 142465, "code": "SEA", "lang": "en", "country": "US", "lat": 47.6066, "lon": -122.332, "timezone": "America/Los_Angeles" },
+        { "name": "Tampa", "id": 260025, "code": "TPA", "lang": "en", "country": "US", "lat": 27.9501, "lon": -82.4571, "timezone": "America/New_York" },
+        { "name": "Tucson", "id": 143796, "code": "TUS", "lang": "en", "country": "US", "lat": 32.2226, "lon": -110.9741, "timezone": "America/Phoenix" },
+        { "name": "Tulsa", "id": 142461, "code": "TUL", "lang": "en", "country": "US", "lat": 36.154, "lon": -95.9928, "timezone": "America/Chicago" },
+        { "name": "Washington DC", "id": 142460, "code": "IAD", "lang": "en", "country": "US", "lat": 38.9074, "lon": -77.0372, "timezone": "America/New_York" },
+        { "name": "West Palm Beach", "id": 260026, "code": "PBI", "lang": "en", "country": "US", "lat": 26.7153, "lon": -80.0534, "timezone": "America/New_York" }
+      ]
+    },
+    {
+      "name": "Canada",
+      "cities": [
+        { "name": "Edmonton", "id": 501765, "code": "YEG", "lang": "en", "country": "CA", "lat": 53.5462, "lon": -113.4935, "timezone": "America/Edmonton", "tz": [ "America/Edmonton" ] },
+        { "name": "Montreal", "local": "Montréal", "id": 142548, "code": "YUL", "lang": "fr", "country": "CA", "lat": 45.5029, "lon": -73.5652, "timezone": "America/Toronto" },
+        { "name": "Toronto", "id": 142462, "code": "YYZ", "lang": "en", "country": "CA", "lat": 43.654, "lon": -79.3813, "timezone": "America/Toronto", "tz": [ "America/Toronto" ] },
+        { "name": "Vancouver", "id": 260028, "code": "YVR", "lang": "en", "country": "CA", "lat": 49.2822, "lon": -123.1174, "timezone": "America/Vancouver", "tz": [ "America/Vancouver" ] }
+      ]
+    },
+    {
+      "name": "Latin America",
+      "cities": [
+        { "name": "Bogota", "local": "Bogotá", "id": 501763, "code": "BOG", "lang": "es", "country": "CO", "lat": 4.6243, "lon": -74.0636, "timezone": "America/Bogota", "tz": [ "America/Bogota" ] },
+        { "name": "Rio de Janeiro", "id": 142736, "code": "GIG", "lang": "pt", "country": "BR", "lat": -22.9131, "lon": -43.1886, "timezone": "America/Sao_Paulo" },
+        { "name": "Santiago", "id": 142550, "code": "SCL", "lang": "es", "country": "CL", "lat": -33.4513, "lon": -70.6653, "timezone": "America/Santiago", "tz": [ "America/Santiago" ] },
+        { "name": "São Paulo", "id": 142618, "code": "GRU", "lang": "pt", "country": "BR", "lat": -23.5489, "lon": -46.6388, "timezone": "America/Sao_Paulo", "tz": [ "America/Sao_Paulo" ] }
+      ]
+    },
+    {
+      "name": "Asia-Pacific & Middle East",
+      "cities": [
+        { "name": "Adelaide", "id": 142815, "code": "ADL", "lang": "en", "country": "AU", "lat": -34.9333, "lon": 138.6, "timezone": "Australia/Adelaide", "tz": [ "Australia/Adelaide" ] },
+        { "name": "Brisbane", "id": 142481, "code": "BNE", "lang": "en", "country": "AU", "lat": -27.4678, "lon": 153.028, "timezone": "Australia/Brisbane", "tz": [ "Australia/Brisbane" ] },
+        { "name": "Dubai", "id": 142477, "code": "DXB", "lang": "en", "country": "AE", "lat": 25.2077, "lon": 55.2711, "timezone": "Asia/Dubai", "tz": [ "Asia/Dubai" ] },
+        { "name": "Melbourne", "id": 142472, "code": "MEL", "lang": "en", "country": "AU", "lat": -37.8136, "lon": 144.963, "timezone": "Australia/Melbourne", "tz": [ "Australia/Melbourne" ] },
+        { "name": "Perth", "id": 263498, "code": "PER", "lang": "en", "country": "AU", "lat": -31.9522, "lon": 115.859, "timezone": "Australia/Perth", "tz": [ "Australia/Perth" ] },
+        { "name": "Singapore", "id": 142463, "code": "SIN", "lang": "en", "country": "SG", "lat": 1.2833, "lon": 103.85, "timezone": "Asia/Singapore", "tz": [ "Asia/Singapore" ] },
+        { "name": "Sydney", "id": 259075, "code": "SYD", "lang": "en", "country": "AU", "lat": -33.8686, "lon": 151.2087, "timezone": "Australia/Sydney", "tz": [ "Australia/Sydney" ] }
+      ]
+    }
   ]
 }
