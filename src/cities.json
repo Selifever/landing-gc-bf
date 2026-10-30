@@ -1,5 +1,5 @@
 {
-  "_source": "Sheet 'Black Friday Organization_2026' > tab 'Black Friday - WL Plans'. Mexico City (142366) comes from tab 'Black Friday - WL'. code = Fever internal city code (DWH COM_DIM_CITY.CD_CITY), used in utm_campaign={id}_{code}. lang/country = language Fever serves at feverup.com/m/{id} (verified 2026-10-30). tz = device time zones that trigger the 'Near you' suggestion.",
+  "_source": "Sheet 'Black Friday Organization_2026' > tab 'Black Friday - WL Plans'. Mexico City is left out on purpose. code = Fever internal city code (DWH COM_DIM_CITY.CD_CITY), used in utm_campaign={id}_{code}. lang/country = language Fever serves at feverup.com/m/{id} (verified 2026-10-30). tz = device time zones that trigger the 'Near you' suggestion.",
   "regions": [
     { "name": "Spain", "cities": [
       { "name": "Alicante", "id": 492860, "code": "ALC", "lang": "es", "country": "ES" },
@@ -99,8 +99,7 @@
       { "name": "Vancouver", "id": 260028, "code": "YVR", "lang": "en", "country": "CA", "tz": ["America/Vancouver"] }
     ]},
     { "name": "Latin America", "cities": [
-      { "name": "Bogotá", "id": 501763, "code": "BOG", "lang": "es", "country": "CO", "tz": ["America/Bogota"] },
-      { "name": "Mexico City", "local": "Ciudad de México", "id": 142366, "code": "MEX", "lang": "es", "country": "MX", "tz": ["America/Mexico_City"] },
+      { "name": "Bogota", "local": "Bogotá", "id": 501763, "code": "BOG", "lang": "es", "country": "CO", "tz": ["America/Bogota"] },
       { "name": "Rio de Janeiro", "id": 142736, "code": "GIG", "lang": "pt", "country": "BR" },
       { "name": "Santiago", "id": 142550, "code": "SCL", "lang": "es", "country": "CL", "tz": ["America/Santiago"] },
       { "name": "São Paulo", "id": 142618, "code": "GRU", "lang": "pt", "country": "BR", "tz": ["America/Sao_Paulo"] }

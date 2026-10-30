@@ -17,7 +17,7 @@ El HTML publicado (`index.html`) es **generado**: no lo edites a mano.
    node scripts/build.mjs
    ```
 
-   Con `--check` además abre las 95 WL y comprueba que responden 200 y en el idioma esperado:
+   Con `--check` además abre todas las WL y comprueba que responden 200 y en el idioma esperado:
 
    ```bash
    node scripts/build.mjs --check
@@ -25,7 +25,7 @@ El HTML publicado (`index.html`) es **generado**: no lo edites a mano.
 
 ## Datos
 
-- Ciudades/plan IDs: sheet "Black Friday Organization_2026" › pestaña "Black Friday - WL Plans" (Mexico City sale de la pestaña "Black Friday - WL", plan `142366`, "El Buen Fin").
+- Ciudades/plan IDs: sheet "Black Friday Organization_2026" › pestaña "Black Friday - WL Plans". Mexico City no se incluye a propósito.
 - `code`: código interno de ciudad de Fever (`COM_DIM_CITY.CD_CITY` en el DWH), no siempre IATA (p. ej. Berlin = `QPP`, Jersey City = `DSS`).
 - `lang`/`country`: idioma en el que Fever sirve `feverup.com/m/{id}` (comprobado con `--check`). Fever ya sirve cada WL en el idioma de su ciudad; `/{lang}/m/{id}` no existe (404).
 
@@ -41,7 +41,7 @@ Cada enlace sale prerenderizado con:
 
 ## SEO, bots y preview
 
-- Contenido prerenderizado: los 95 enlaces, títulos y textos están en el HTML (sin depender de JS).
+- Contenido prerenderizado: todos los enlaces, títulos y textos están en el HTML (sin depender de JS).
 - `robots.txt` permite todo, incluidos `AdsBot-Google` y `AdsBot-Google-Mobile` (que ignoran `User-agent: *`), y apunta a `sitemap.xml`.
 - `canonical`, `meta robots`, Open Graph/Twitter (`og-image.jpg`, 1200×630) y JSON-LD (`WebPage` + `ItemList` de las WL).
 - `.nojekyll`: GitHub Pages sirve los archivos tal cual, sin Jekyll.
