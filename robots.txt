@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Google Ads crawlers ignore the * group, so they are allowed explicitly
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+Sitemap: https://feverseasonals.com/sitemap.xml
