@@ -23,10 +23,42 @@ El HTML publicado (`index.html`) es **generado**: no lo edites a mano.
    node scripts/build.mjs --check
    ```
 
+## Actualización automática desde el sheet
+
+La GitHub Action `.github/workflows/sync-cities.yml` lee el sheet cada 15 minutos (y cuando se lanza a mano desde *Actions › Sync cities › Run workflow*):
+
+1. `scripts/sync.mjs` compara el sheet con `src/cities.json`:
+   - **Ciudad nueva** en el sheet → se añade con código de ciudad, idioma, país, coordenadas y zona horaria leídos de `feverup.com/m/{id}`, y con la región según su país.
+   - **Ciudad que desaparece** del sheet → se quita.
+   - Las filas sin plan ID, o cuyo plan todavía no existe, se saltan y se reintentan en la siguiente ejecución.
+   - Los plan IDs en `exclude` (Mexico City) nunca se añaden.
+   - Lo editado a mano (nombre, nombre local, región) se conserva.
+   - Si el sheet llega con menos de la mitad de ciudades, no se toca nada (protección ante un sheet roto).
+2. `scripts/build.mjs --check` regenera la página y comprueba todas las WL. Si alguna falla, no se publica.
+3. Si hay cambios, hace commit a la rama y, en `main`, pide un build de GitHub Pages.
+
+**Configuración necesaria (una vez):** el sheet es privado, así que GitHub no puede leerlo tal cual.
+
+1. En el sheet, crear una pestaña nueva (p. ej. `Landing feed`) con solo las dos columnas que hacen falta, para no publicar notas internas:
+   `={'Black Friday - WL Plans'!B4:C}` (cabeceras `CITY` y `PLAN ID`).
+2. *Archivo › Compartir › Publicar en la web* → solo esa pestaña → formato CSV → copiar la URL.
+3. En GitHub: *Settings › Secrets and variables › Actions › New repository secret* → `SHEET_CSV_URL` = esa URL.
+
+La programación cada 15 min solo corre desde `main` (es como funcionan las Actions programadas). GitHub las desactiva tras 60 días sin actividad en el repo.
+
+**Opcional, al instante:** `scripts/apps-script.gs` lanza la Action en cuanto se edita el sheet (instrucciones dentro del archivo).
+
+Para sincronizar a mano: `node scripts/sync.mjs --csv <archivo.csv|url>`. Para releer de las WL los datos de todas las ciudades: `node scripts/sync.mjs --refresh`.
+
+## Near you
+
+- Sin pedir permisos: se adivina la ciudad por zona horaria + idioma del navegador. Si el idioma trae país (`es-ES`) y ese país tiene la misma hora que el dispositivo, gana el idioma (Windows en España dice `Europe/Paris`).
+- Con **"Use my location"** (o si el usuario ya había dado permiso), se usa la ubicación del dispositivo y se elige la ciudad más cercana (máx. 150 km). La ubicación no sale del navegador.
+
 ## Datos
 
-- Ciudades/plan IDs: sheet "Black Friday Organization_2026" › pestaña "Black Friday - WL Plans". Mexico City no se incluye a propósito.
-- `code`: código interno de ciudad de Fever (`COM_DIM_CITY.CD_CITY` en el DWH), no siempre IATA (p. ej. Berlin = `QPP`, Jersey City = `DSS`).
+- Ciudades/plan IDs: sheet "Black Friday Organization_2026" › pestaña "Black Friday - WL Plans". Mexico City no se incluye a propósito (`exclude` en `src/cities.json`).
+- `code`: código interno de ciudad de Fever (`COM_DIM_CITY.CD_CITY` en el DWH), no siempre IATA (p. ej. Berlin = `QPP`, Jersey City = `DSS`). Para ciudades añadidas automáticamente sale de `cityCode` de la WL; coincide con el DWH en todas salvo Santa Rosa (WL: `STS`, DWH: `BVQ`; se mantiene `BVQ`).
 - `lang`/`country`: idioma en el que Fever sirve `feverup.com/m/{id}` (comprobado con `--check`). Fever ya sirve cada WL en el idioma de su ciudad; `/{lang}/m/{id}` no existe (404).
 
 ## UTMs
