@@ -1,0 +1,118 @@
+{
+  "_source": "Sheet 'Black Friday Organization_2026' > tab 'Black Friday - WL Plans'. Mexico City (142366) comes from tab 'Black Friday - WL'. code = Fever internal city code (DWH COM_DIM_CITY.CD_CITY), used in utm_campaign={id}_{code}. lang/country = language Fever serves at feverup.com/m/{id} (verified 2026-10-30). tz = device time zones that trigger the 'Near you' suggestion.",
+  "regions": [
+    { "name": "Spain", "cities": [
+      { "name": "Alicante", "id": 492860, "code": "ALC", "lang": "es", "country": "ES" },
+      { "name": "Barcelona", "id": 142766, "code": "BCN", "lang": "es", "country": "ES" },
+      { "name": "Bilbao", "id": 259144, "code": "BIO", "lang": "es", "country": "ES" },
+      { "name": "Madrid", "id": 142275, "code": "MAD", "lang": "es", "country": "ES", "tz": ["Europe/Madrid"] },
+      { "name": "Majorca", "local": "Mallorca", "id": 260009, "code": "PMI", "lang": "es", "country": "ES" },
+      { "name": "Murcia", "id": 261722, "code": "MJV", "lang": "es", "country": "ES" },
+      { "name": "Seville", "local": "Sevilla", "id": 260010, "code": "SEV", "lang": "es", "country": "ES" },
+      { "name": "Valencia", "id": 260011, "code": "VLC", "lang": "es", "country": "ES" },
+      { "name": "Zaragoza", "id": 260012, "code": "ZAZ", "lang": "es", "country": "ES" }
+    ]},
+    { "name": "UK & Ireland", "cities": [
+      { "name": "Birmingham", "id": 261719, "code": "BHX", "lang": "en", "country": "GB" },
+      { "name": "Dublin", "id": 142476, "code": "DUB", "lang": "en", "country": "IE", "tz": ["Europe/Dublin"] },
+      { "name": "Leeds", "id": 501772, "code": "LBA", "lang": "en", "country": "GB" },
+      { "name": "Liverpool", "id": 261718, "code": "LPL", "lang": "en", "country": "GB" },
+      { "name": "London", "id": 142272, "code": "LON", "lang": "en", "country": "GB", "tz": ["Europe/London"] },
+      { "name": "Manchester", "id": 142473, "code": "MAN", "lang": "en", "country": "GB" }
+    ]},
+    { "name": "France", "cities": [
+      { "name": "Bordeaux", "id": 260008, "code": "BOD", "lang": "fr", "country": "FR" },
+      { "name": "Lille", "id": 261730, "code": "LIL", "lang": "fr", "country": "FR" },
+      { "name": "Lyon", "id": 259260, "code": "LYS", "lang": "fr", "country": "FR" },
+      { "name": "Marseille", "id": 259261, "code": "MRS", "lang": "fr", "country": "FR" },
+      { "name": "Nice", "id": 261729, "code": "NCE", "lang": "fr", "country": "FR" },
+      { "name": "Paris", "id": 142276, "code": "PAR", "lang": "fr", "country": "FR", "tz": ["Europe/Paris"] },
+      { "name": "Strasbourg", "id": 261113, "code": "SXB", "lang": "fr", "country": "FR" },
+      { "name": "Toulouse", "id": 259262, "code": "TLS", "lang": "fr", "country": "FR" }
+    ]},
+    { "name": "Germany & Austria", "cities": [
+      { "name": "Berlin", "id": 142421, "code": "QPP", "lang": "de", "country": "DE", "tz": ["Europe/Berlin"] },
+      { "name": "Dresden", "id": 492859, "code": "DRS", "lang": "de", "country": "DE" },
+      { "name": "Frankfurt", "id": 260013, "code": "FRA", "lang": "de", "country": "DE" },
+      { "name": "Hamburg", "id": 259010, "code": "HAM", "lang": "de", "country": "DE" },
+      { "name": "Munich", "local": "München", "id": 259011, "code": "MUC", "lang": "de", "country": "DE" },
+      { "name": "Stuttgart", "id": 492855, "code": "STR", "lang": "de", "country": "DE" },
+      { "name": "Vienna", "local": "Wien", "id": 143713, "code": "VIE", "lang": "de", "country": "AT", "tz": ["Europe/Vienna"] }
+    ]},
+    { "name": "Rest of Europe", "cities": [
+      { "name": "Amsterdam", "id": 492844, "code": "AMS", "lang": "nl", "country": "NL", "tz": ["Europe/Amsterdam"] },
+      { "name": "Brussels", "local": "Bruxelles", "id": 142549, "code": "BRU", "lang": "fr", "country": "BE", "tz": ["Europe/Brussels"] },
+      { "name": "Geneva", "local": "Genève", "id": 261112, "code": "GVA", "lang": "fr", "country": "CH", "tz": ["Europe/Zurich"] },
+      { "name": "Liège", "id": 261111, "code": "LGG", "lang": "fr", "country": "BE" },
+      { "name": "Lisbon", "local": "Lisboa", "id": 259013, "code": "LIS", "lang": "pt", "country": "PT", "tz": ["Europe/Lisbon"] },
+      { "name": "Porto", "id": 259014, "code": "OPO", "lang": "pt", "country": "PT" },
+      { "name": "Stockholm", "id": 492861, "code": "ARN", "lang": "sv", "country": "SE", "tz": ["Europe/Stockholm"] }
+    ]},
+    { "name": "United States", "cities": [
+      { "name": "Atlanta", "id": 142485, "code": "ATL", "lang": "en", "country": "US" },
+      { "name": "Austin", "id": 142484, "code": "AUS", "lang": "en", "country": "US" },
+      { "name": "Baltimore", "id": 144885, "code": "BWI", "lang": "en", "country": "US" },
+      { "name": "Boston", "id": 142482, "code": "BOS", "lang": "en", "country": "US" },
+      { "name": "Charleston", "id": 261717, "code": "CHS", "lang": "en", "country": "US" },
+      { "name": "Chicago", "id": 142479, "code": "ORD", "lang": "en", "country": "US", "tz": ["America/Chicago"] },
+      { "name": "Cincinnati", "id": 260016, "code": "CVG", "lang": "en", "country": "US" },
+      { "name": "Cleveland", "id": 260017, "code": "CLE", "lang": "en", "country": "US" },
+      { "name": "Columbus", "id": 261711, "code": "CMH", "lang": "en", "country": "US" },
+      { "name": "Dallas", "id": 142478, "code": "DFW", "lang": "en", "country": "US" },
+      { "name": "Denver", "id": 259076, "code": "DEN", "lang": "en", "country": "US", "tz": ["America/Denver"] },
+      { "name": "Detroit", "id": 260018, "code": "DTW", "lang": "en", "country": "US", "tz": ["America/Detroit"] },
+      { "name": "Fort Lauderdale", "id": 144886, "code": "FLL", "lang": "en", "country": "US" },
+      { "name": "Houston", "id": 142475, "code": "IAH", "lang": "en", "country": "US" },
+      { "name": "Indianapolis", "id": 261715, "code": "IND", "lang": "en", "country": "US", "tz": ["America/Indiana/Indianapolis"] },
+      { "name": "Jersey City", "id": 261716, "code": "DSS", "lang": "en", "country": "US" },
+      { "name": "Kansas City", "id": 261710, "code": "MCI", "lang": "en", "country": "US" },
+      { "name": "Los Angeles", "id": 142474, "code": "LAX", "lang": "en", "country": "US", "tz": ["America/Los_Angeles"] },
+      { "name": "Memphis", "id": 261712, "code": "MEM", "lang": "en", "country": "US" },
+      { "name": "Miami", "id": 260019, "code": "MIA", "lang": "en", "country": "US" },
+      { "name": "Minneapolis", "id": 261714, "code": "MSP", "lang": "en", "country": "US" },
+      { "name": "Nashville", "id": 144887, "code": "BNA", "lang": "en", "country": "US" },
+      { "name": "New York", "id": 142469, "code": "NYC", "lang": "en", "country": "US", "tz": ["America/New_York"] },
+      { "name": "Orlando", "id": 260020, "code": "MCO", "lang": "en", "country": "US" },
+      { "name": "Philadelphia", "id": 260021, "code": "PHL", "lang": "en", "country": "US" },
+      { "name": "Phoenix", "id": 260022, "code": "PHX", "lang": "en", "country": "US", "tz": ["America/Phoenix"] },
+      { "name": "Portland", "id": 142467, "code": "PDX", "lang": "en", "country": "US" },
+      { "name": "Raleigh", "id": 143795, "code": "RDU", "lang": "en", "country": "US" },
+      { "name": "Richmond", "id": 260023, "code": "RIC", "lang": "en", "country": "US" },
+      { "name": "Sacramento", "id": 143257, "code": "SMF", "lang": "en", "country": "US" },
+      { "name": "Salt Lake City", "id": 142466, "code": "SLC", "lang": "en", "country": "US" },
+      { "name": "San Antonio", "id": 144888, "code": "SAT", "lang": "en", "country": "US" },
+      { "name": "San Diego", "id": 143258, "code": "SAN", "lang": "en", "country": "US" },
+      { "name": "San Francisco", "id": 142464, "code": "SFO", "lang": "en", "country": "US" },
+      { "name": "San Jose", "id": 143259, "code": "SJC", "lang": "en", "country": "US" },
+      { "name": "Santa Rosa", "id": 260024, "code": "BVQ", "lang": "en", "country": "US" },
+      { "name": "Seattle", "id": 142465, "code": "SEA", "lang": "en", "country": "US" },
+      { "name": "Tampa", "id": 260025, "code": "TPA", "lang": "en", "country": "US" },
+      { "name": "Tucson", "id": 143796, "code": "TUS", "lang": "en", "country": "US" },
+      { "name": "Tulsa", "id": 142461, "code": "TUL", "lang": "en", "country": "US" },
+      { "name": "Washington DC", "id": 142460, "code": "IAD", "lang": "en", "country": "US" },
+      { "name": "West Palm Beach", "id": 260026, "code": "PBI", "lang": "en", "country": "US" }
+    ]},
+    { "name": "Canada", "cities": [
+      { "name": "Edmonton", "id": 501765, "code": "YEG", "lang": "en", "country": "CA", "tz": ["America/Edmonton"] },
+      { "name": "Montreal", "local": "Montréal", "id": 142548, "code": "YUL", "lang": "fr", "country": "CA" },
+      { "name": "Toronto", "id": 142462, "code": "YYZ", "lang": "en", "country": "CA", "tz": ["America/Toronto"] },
+      { "name": "Vancouver", "id": 260028, "code": "YVR", "lang": "en", "country": "CA", "tz": ["America/Vancouver"] }
+    ]},
+    { "name": "Latin America", "cities": [
+      { "name": "Bogotá", "id": 501763, "code": "BOG", "lang": "es", "country": "CO", "tz": ["America/Bogota"] },
+      { "name": "Mexico City", "local": "Ciudad de México", "id": 142366, "code": "MEX", "lang": "es", "country": "MX", "tz": ["America/Mexico_City"] },
+      { "name": "Rio de Janeiro", "id": 142736, "code": "GIG", "lang": "pt", "country": "BR" },
+      { "name": "Santiago", "id": 142550, "code": "SCL", "lang": "es", "country": "CL", "tz": ["America/Santiago"] },
+      { "name": "São Paulo", "id": 142618, "code": "GRU", "lang": "pt", "country": "BR", "tz": ["America/Sao_Paulo"] }
+    ]},
+    { "name": "Asia-Pacific & Middle East", "cities": [
+      { "name": "Adelaide", "id": 142815, "code": "ADL", "lang": "en", "country": "AU", "tz": ["Australia/Adelaide"] },
+      { "name": "Brisbane", "id": 142481, "code": "BNE", "lang": "en", "country": "AU", "tz": ["Australia/Brisbane"] },
+      { "name": "Dubai", "id": 142477, "code": "DXB", "lang": "en", "country": "AE", "tz": ["Asia/Dubai"] },
+      { "name": "Melbourne", "id": 142472, "code": "MEL", "lang": "en", "country": "AU", "tz": ["Australia/Melbourne"] },
+      { "name": "Perth", "id": 263498, "code": "PER", "lang": "en", "country": "AU", "tz": ["Australia/Perth"] },
+      { "name": "Singapore", "id": 142463, "code": "SIN", "lang": "en", "country": "SG", "tz": ["Asia/Singapore"] },
+      { "name": "Sydney", "id": 259075, "code": "SYD", "lang": "en", "country": "AU", "tz": ["Australia/Sydney"] }
+    ]}
+  ]
+}
