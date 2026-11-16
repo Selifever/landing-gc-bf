@@ -27,8 +27,8 @@ const MOBILE = "v1793118856/BlackFriday-InmersiveListing-Landing-Mobile_ybghgv";
 const MEDIA = {
   VIDEO_DESKTOP: `${CDN}/q_auto,vc_h264,w_1280/${DESKTOP}.mp4`,
   VIDEO_MOBILE: `${CDN}/q_auto,vc_h264,w_720/${MOBILE}.mp4`,
-  POSTER_DESKTOP: `${CDN}/so_2,f_auto,q_auto,w_1280/${DESKTOP}.jpg`,
-  POSTER_MOBILE: `${CDN}/so_2,f_auto,q_auto,w_720/${MOBILE}.jpg`
+  POSTER_DESKTOP: `${CDN}/so_2,f_jpg,q_auto,w_1280/${DESKTOP}.jpg`,
+  POSTER_MOBILE: `${CDN}/so_2,f_jpg,q_auto,w_720/${MOBILE}.jpg`
 };
 /* ================== */
 
@@ -92,6 +92,8 @@ const jsonLd = {
 
 const vars = {
   SITE, TITLE: esc(TITLE), DESCRIPTION: esc(DESCRIPTION), COUNT: all.length, CHIPS: chips, CITIES: cityHtml,
+  // Official white Fever wordmark (feverup.com/assets/img/fever/fever-logo-white.svg), inlined
+  LOGO: (svg => svg.slice(svg.indexOf("<svg")).trim().replace("<svg ", '<svg aria-hidden="true" '))(readFileSync(join(root, "favicons/fever-logo-white.svg"), "utf8")),
   JSONLD: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
   ...Object.fromEntries(Object.entries(MEDIA).map(([k, v]) => [k, esc(v)]))
 };
