@@ -82,4 +82,9 @@ Cada enlace sale prerenderizado con:
 
 Vídeos oficiales "Immersive Listing Landing" de Fever BF26 (Cloudinary › `0_Others/Fever_Fever/Seasonals/Black Friday/2026/Black Friday/Marketplace`), servidos optimizados desde `media.feverup.com` (~0,7 MB). El fotograma se muestra como imagen estática (también para bots y sin JS); el vídeo se carga encima por JS y no se reproduce con "reducir movimiento" ni con ahorro de datos.
 
+## Marca
+
+- **Tipografía**: la de marca de Fever es Neue Haas Grotesk Display. No tiene licencia web libre, así que se usa como en business.feverup.com: `"Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif` (Helvetica Neue en Apple, Roboto en Android). Sin Google Fonts. Montserrat es la fuente de producto (app/web), no la de marketing.
+- **Favicons**: los oficiales de feverup.com (`favicons/`), más `site.webmanifest`. Logo blanco oficial en el footer (`favicons/fever-logo-white.svg`, incrustado al generar).
+
 Paleta BF26 sacada de las creatividades oficiales: fondo `#0d0120`, lila `#d2aeff`, verde `#51da94`, azul `#67cbff`, amarillo `#ffd779`, rojo `#ed565b`.
